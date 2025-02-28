@@ -1,14 +1,16 @@
+version: '3.8'
+
 services:
   db:
     image: postgres
     restart: always
     shm_size: 512mb
     volumes:
-      - pg-data:/var/lib/postgresql/data/pgdata
+      - ./pgdata:/var/lib/postgresql/data/pgdata
     networks:
       - app
     ports:
-      - 5432:5432
+      - "5445:5432"
     environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASS}
@@ -20,11 +22,8 @@ services:
     networks:
       - app
     ports:
-      - 6144:8080
+      - "6144:8080"
 
 networks:
   app:
     driver: bridge
-
-volumes:
-  pg-data:
