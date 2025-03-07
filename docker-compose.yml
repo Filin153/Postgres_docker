@@ -7,7 +7,6 @@ services:
     shm_size: 512mb
     volumes:
       - ./pgdata:/var/lib/postgresql/data/pgdata
-      - pg-data:/var/lib/postgresql/data/pgdata
     networks:
       - app
     ports:
@@ -28,7 +27,3 @@ services:
 networks:
   app:
     driver: bridge
-
-
-volumes:
-  pg-data:
